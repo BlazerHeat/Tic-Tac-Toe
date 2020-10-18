@@ -123,8 +123,11 @@ if __name__ == "__main__":
 
         try:
             user_choice = int(input("Choose where to place? (1-9): "))
-            if user_choice < 1 or user_choice > 9 or user_choice in piece_placed:
+            if user_choice < 1 or user_choice > 9:
                 raise Exception()
+            elif user_choice in piece_placed:
+                print("Place already taken...")
+                continue
         except Exception as e:
             print("Invalid input")
             continue
