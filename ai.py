@@ -1,7 +1,5 @@
 from math import inf as infinity
 from main import check_win
-from sys import setrecursionlimit
-setrecursionlimit(10**8)
 
 scores = {
 'O': 1,
