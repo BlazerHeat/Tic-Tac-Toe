@@ -21,16 +21,6 @@ def print_board(board):
     print(display, '\n')
 
 def check_win(board):
-    is_tie = True
-
-    for i in range(3):
-        for j in range(3):
-            if board[i][j] == ' ':
-                is_tie = False
-                break
-    if is_tie:
-        return 'tie'
-    
     row1 = board[0][0] == board[0][1] == board[0][2] != ' '
     row2 = board[1][0] == board[1][1] == board[1][2] != ' '
     row3 = board[2][0] == board[2][1] == board[2][2] != ' '
@@ -60,6 +50,14 @@ def check_win(board):
         return board[0][0]
     if dia2:
         return board[0][2]
+
+    is_tie = True
+    for i, j in ((i, j) for i in range(3) for j in range(3)):
+        if board[i][j] == ' ':
+            is_tie = False
+            break
+    if is_tie:
+        return 'tie'
     
     return False
 
