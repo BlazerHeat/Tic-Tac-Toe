@@ -1,7 +1,7 @@
 import ai
 
 game_board = [[' ' for _ in range(3)] for _ in range(3)]
-
+piece_placed = []
 game_over_messages = {
     'X': 'USER WON!',
     'O': 'CPU WON!',
@@ -9,7 +9,7 @@ game_over_messages = {
 }
 
 def print_board(board):
-    display = ''
+    display = '\n'
     for i in range(3):
         for j in range(3):
             if j < 2:
@@ -18,7 +18,7 @@ def print_board(board):
                 display += board[i][j]
         if i < 2:
             display += '\n-+-+-\n'
-    print(display)
+    print(display, '\n')
 
 def check_win(board):
     is_tie = True
@@ -114,10 +114,13 @@ def eval_move(move):
     elif i == 2 and j == 2:
         return 9
 
+def make_move(board, pos, player, piece_placed):
+    piece_placed.append(pos)
+    place_piece(board, pos, player)
+    print_board(board)
 
 if __name__ == "__main__":
     print_board(game_board)
-    piece_placed = []
     while True:
         user_choice = None
 
@@ -132,9 +135,7 @@ if __name__ == "__main__":
             print("Invalid input")
             continue
 
-        piece_placed.append(user_choice)
-        place_piece(game_board, user_choice, 'user')
-        print_board(game_board)
+        make_move(game_board, user_choice, 'user', piece_placed)
         
         result = check_win(game_board)
         if result:
@@ -144,9 +145,7 @@ if __name__ == "__main__":
 
         cpu_choice = eval_move(ai.best_move(game_board))
 
-        piece_placed.append(cpu_choice)
-        place_piece(game_board, cpu_choice, 'cpu')
-        print_board(game_board)
+        make_move(game_board, cpu_choice, 'cpu', piece_placed)
         
         result = check_win(game_board)
         if result:
