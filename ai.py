@@ -1,10 +1,10 @@
 from math import inf as infinity
-from main import check_win
+from main import check_win, CPU, USER
 
 scores = {
-'O': 1,
+CPU: 1,
 'tie': 0,
-'X': -1
+USER: -1
 }
 
 def best_move(board):
@@ -12,7 +12,7 @@ def best_move(board):
     move = None
     for i, j in ((i, j) for i in range(3) for j in range(3)):
         if board[i][j] == ' ':
-            board[i][j] = 'O'
+            board[i][j] = CPU
             score = minmax(board, 0, False, -infinity, infinity)
             board[i][j] = ' '
             if score > best_score:
@@ -30,7 +30,7 @@ def minmax(board, depth, maximizing, alpha, beta):
         best_score = -infinity
         for i, j in ((i, j) for i in range(3) for j in range(3)):
             if board[i][j] == ' ':
-                board[i][j] = 'O'
+                board[i][j] = CPU
                 score = minmax(board, depth + 1, False, alpha, beta)
                 board[i][j] = ' '
                 best_score = max(score, best_score)
@@ -42,7 +42,7 @@ def minmax(board, depth, maximizing, alpha, beta):
         best_score = infinity
         for i, j in ((i, j) for i in range(3) for j in range(3)):
             if board[i][j] == ' ':
-                board[i][j] = 'X'
+                board[i][j] = USER
                 score = minmax(board, depth + 1, True, alpha, beta)
                 board[i][j] = ' '
                 best_score = min(score, best_score)

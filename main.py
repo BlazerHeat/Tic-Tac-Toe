@@ -1,5 +1,9 @@
 import ai
 
+#Selection
+CPU = 'X'
+USER = 'O'
+
 game_board = [[' ' for _ in range(3)] for _ in range(3)]
 piece_placed = []
 game_over_messages = {
@@ -64,9 +68,9 @@ def check_win(board):
 def place_piece(board, pos, player):
     piece = None
     if player == 'cpu':
-        piece = 'O'
+        piece = CPU
     elif player == 'user':
-        piece = 'X'
+        piece = USER
     else:
         piece = ' '
 
