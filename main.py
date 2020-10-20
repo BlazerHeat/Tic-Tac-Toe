@@ -7,8 +7,8 @@ USER = 'O'
 game_board = [[' ' for _ in range(3)] for _ in range(3)]
 piece_placed = []
 game_over_messages = {
-    'X': 'USER WON!',
-    'O': 'CPU WON!',
+    USER: 'USER WON!',
+    CPU: 'CPU WON!',
     'tie': 'Its TIE!'
 }
 
