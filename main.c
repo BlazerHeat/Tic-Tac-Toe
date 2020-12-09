@@ -58,7 +58,8 @@ int main(){
     else if(condition == CPU) printf("CPU WON!");
     else printf("YOU WON!");
 
-    printf("\n");
+    printf("\n\n");
+    printf("Press any button to exit.");
     getch();
     
     return 0;
