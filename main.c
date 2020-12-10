@@ -32,6 +32,7 @@ int main(){
         printf("Choose where to place? (1-9): ");
         scanf("%d", &userInput);
 
+        //input validation
         while (isExists(placedPositions, userInput) || userInput < 1 || userInput > 9){
             fflush(stdin);
             printf("Invaild Input Try again\n");
@@ -41,6 +42,7 @@ int main(){
 
         placePiece(USER, userInput);
         placedPositions[currentMove++] = userInput;
+        
         condition = checkWin(gameBoard);
         if(condition != ' ') break;
 
@@ -173,7 +175,6 @@ int minmax(char board[3][3], int depth, int maximizing, int alpha, int beta){
                     alpha = fmax(alpha, bestScore);
                     if(beta <= alpha) break;
                 }
-                
             }
             if(beta <= alpha) break;
         }
