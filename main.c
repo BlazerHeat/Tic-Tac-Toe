@@ -33,6 +33,7 @@ int main(){
         scanf("%d", &userInput);
 
         while (isExists(placedPositions, userInput) || userInput < 1 || userInput > 9){
+            fflush(stdin);
             printf("Invaild Input Try again\n");
             printf("Choose where to place? (1-9): ");
             scanf("%d", &userInput);
@@ -50,7 +51,6 @@ int main(){
 
         condition = checkWin(gameBoard);
         if(condition != ' ') break;
-
     }
     printBoard(gameBoard);
 
