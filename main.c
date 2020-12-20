@@ -33,11 +33,10 @@ int main(){
         scanf("%d", &userInput);
 
         //input validation
-        while (isExists(placedPositions, userInput) || userInput < 1 || userInput > 9){
+        if (isExists(placedPositions, userInput) || userInput < 1 || userInput > 9){
             fflush(stdin);
             printf("Invaild Input Try again\n");
-            printf("Choose where to place? (1-9): ");
-            scanf("%d", &userInput);
+            continue;
         }
 
         placePiece(USER, userInput);
