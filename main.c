@@ -122,8 +122,7 @@ void placePiece(char piece, int position){
 }
 
 int checkEqual(char x, char y, char z){
-    if(x == y && y == z && x != ' ') return 1;
-    else return 0;
+    return (x == y && y == z && x != ' ');
 }
 
 char checkWin(char board[3][3]){
